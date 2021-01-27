@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="second-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="second-input" type="text" class="form-control text-center" value="1">
+                           <button id="second-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="current-case-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="current-subtotal">1,278</span></h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="current-total">1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -103,7 +103,40 @@
          
          document.getElementById("first-input").value = firstInputAmount;
 
+         const currentPriceAmount =  -1 *(firstInputAmount * (-1219));
+         document.getElementById("current-price").innerText = currentPriceAmount;
       })
+      // adding event handler in the + sign of casing
+      const secondPlusBtn = document.getElementById("second-plus");
+      secondPlusBtn.addEventListener("click", function(){
+         const secondInput = document.getElementById("second-input").value;
+         const secondInputNumber = parseFloat(secondInput);
+         const secondInputAmount = secondInputNumber + 1;
+         
+         document.getElementById("second-input").value = secondInputAmount;
+
+         const currentCasePriceAmount = secondInputAmount * 59;
+
+         document.getElementById("current-case-price").innerText = currentCasePriceAmount;
+
+      })
+
+      // adding event handler in the + sign of casing
+      const secondMinusBtn = document.getElementById("second-minus");
+      secondMinusBtn.addEventListener("click", function(){
+         const secondInput = document.getElementById("second-input").value;
+         const secondInputNumber = parseFloat(secondInput);
+         const secondInputAmount = secondInputNumber - 1;
+         
+         document.getElementById("second-input").value = secondInputAmount;
+
+         const currentCasePriceAmount =  -1 *(secondInputAmount * (-59));
+         document.getElementById("current-case-price").innerText = currentCasePriceAmount;
+      })
+
+      // subtotal and total section
+      // const currentSubtotal = document.getElementById("current-subtotal").innerText;
+      // const currentSubtotalNumber = parseFloat(currentSubtotal);
 
 
    </script>
