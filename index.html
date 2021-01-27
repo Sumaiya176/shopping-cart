@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="first-input" type="text" class="form-control text-center" value="1">
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id ="current-price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -77,6 +77,36 @@
          </div>
       </div>
    </section>
+   <script>
+   // adding event handler in the + sign of mobile 
+      const plusBtn = document.getElementById("plus");
+      plusBtn.addEventListener("click", function(){
+         const firstInput = document.getElementById("first-input").value;
+         const firstInputNumber = parseFloat(firstInput);
+         const firstInputAmount = firstInputNumber + 1;
+         
+         document.getElementById("first-input").value = firstInputAmount;
+
+         // const currentPrice = document.getElementById("current-price").innerText;
+         // const currentPriceNumber = parseFloat(currentPrice);
+         const currentPriceAmount = firstInputAmount * 1219;
+
+         document.getElementById("current-price").innerText = currentPriceAmount;
+      })
+
+      // adding event handler in the - sign of mobile
+      const minusBtn = document.getElementById("minus");
+      minusBtn.addEventListener("click", function(){
+         const firstInput = document.getElementById("first-input").value;
+         const firstInputNumber = parseFloat(firstInput);
+         const firstInputAmount = firstInputNumber - 1;
+         
+         document.getElementById("first-input").value = firstInputAmount;
+
+      })
+
+
+   </script>
 </body>
 
 </html>
