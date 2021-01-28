@@ -29,7 +29,7 @@
                            <input id="first-input" type="text" class="form-control text-center" value="1">
                            <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$<span id ="current-price">1219</span></h5>
+                        <h5>$<span id="current-price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -78,60 +78,84 @@
       </div>
    </section>
    <script>
-   // adding event handler in the + sign of mobile 
+      // adding event handler in the + sign of mobile 
       const plusBtn = document.getElementById("plus");
-      plusBtn.addEventListener("click", function(){
+      plusBtn.addEventListener("click", function () {
          const firstInput = document.getElementById("first-input").value;
          const firstInputNumber = parseFloat(firstInput);
          const firstInputAmount = firstInputNumber + 1;
-         
+
          document.getElementById("first-input").value = firstInputAmount;
 
-         // const currentPrice = document.getElementById("current-price").innerText;
-         // const currentPriceNumber = parseFloat(currentPrice);
+      
          const currentPriceAmount = firstInputAmount * 1219;
 
          document.getElementById("current-price").innerText = currentPriceAmount;
+
+         document.getElementById("current-subtotal").innerText = currentPriceAmount + currentCasePriceAmount;
+
+         // if (firstInputNumber < 0) {
+         //    alert("Negative value is not allowed");
+         // } else {
+         //    const firstInputAmount = firstInputNumber + 1;
+
+         //    document.getElementById("first-input").value = firstInputAmount;
+
+         //    const currentPrice = document.getElementById("current-price").innerText;
+         //    const currentPriceNumber = parseFloat(currentPrice);
+         //    const currentPriceAmount = firstInputAmount * 1219;
+
+         //    document.getElementById("current-price").innerText = currentPriceAmount;
+
+         //    document.getElementById("current-subtotal").innerText = currentPriceAmount;
+         // }
+
       })
 
       // adding event handler in the - sign of mobile
       const minusBtn = document.getElementById("minus");
-      minusBtn.addEventListener("click", function(){
+      minusBtn.addEventListener("click", function () {
          const firstInput = document.getElementById("first-input").value;
          const firstInputNumber = parseFloat(firstInput);
          const firstInputAmount = firstInputNumber - 1;
-         
+
          document.getElementById("first-input").value = firstInputAmount;
 
-         const currentPriceAmount =  -1 *(firstInputAmount * (-1219));
+         const currentPriceAmount = -1 * (firstInputAmount * (-1219));
          document.getElementById("current-price").innerText = currentPriceAmount;
+
+         document.getElementById("current-subtotal").innerText = currentPriceAmount + currentCasePriceAmount;
       })
       // adding event handler in the + sign of casing
       const secondPlusBtn = document.getElementById("second-plus");
-      secondPlusBtn.addEventListener("click", function(){
+      secondPlusBtn.addEventListener("click", function () {
          const secondInput = document.getElementById("second-input").value;
          const secondInputNumber = parseFloat(secondInput);
          const secondInputAmount = secondInputNumber + 1;
-         
+
          document.getElementById("second-input").value = secondInputAmount;
 
          const currentCasePriceAmount = secondInputAmount * 59;
 
          document.getElementById("current-case-price").innerText = currentCasePriceAmount;
 
+         document.getElementById("current-subtotal").innerText = currentCasePriceAmount + currentPriceAmount;
+
       })
 
-      // adding event handler in the + sign of casing
+      // adding event handler in the - sign of casing
       const secondMinusBtn = document.getElementById("second-minus");
-      secondMinusBtn.addEventListener("click", function(){
+      secondMinusBtn.addEventListener("click", function () {
          const secondInput = document.getElementById("second-input").value;
          const secondInputNumber = parseFloat(secondInput);
          const secondInputAmount = secondInputNumber - 1;
-         
+
          document.getElementById("second-input").value = secondInputAmount;
 
-         const currentCasePriceAmount =  -1 *(secondInputAmount * (-59));
+         const currentCasePriceAmount = -1 * (secondInputAmount * (-59));
          document.getElementById("current-case-price").innerText = currentCasePriceAmount;
+
+         document.getElementById("current-subtotal").innerText = currentCasePriceAmount +currentPriceAmount;
       })
 
       // subtotal and total section
